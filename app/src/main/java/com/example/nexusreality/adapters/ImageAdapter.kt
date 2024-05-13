@@ -4,7 +4,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nexusreality.R
+//import kotlinx.coroutines.flow.internal.NoOpContinuation.context
+import java.io.File
 import java.lang.ref.WeakReference
+//import kotlin.coroutines.jvm.internal.CompletedContinuation.context
 
 class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ImageViewHolder>() {
 
@@ -34,9 +37,21 @@ class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ImageViewHolder>() {
 
         private val imageView: ImageView = itemView.findViewById(R.id.imageView)
 
+        private var currentImageUrl: String? = null
+        private var imageLoader: ImageLoader? = null
+//        val cacheDir: File? = context.externalCacheDir
         fun bind(imageUrl: String) {
-            val imageLoader = ImageLoader(WeakReference(imageView))
-            imageLoader.execute(imageUrl)
+            val cacheDir: File? = itemView.context.externalCacheDir
+            imageLoader = cacheDir?.let { ImageLoader(WeakReference(imageView), it) }
+            imageLoader?.execute(imageUrl)
+        }
+
+        fun cancelLoading() {
+            imageLoader?.cancel(true)
+        }
+
+        fun getImageUrl(): String? {
+            return currentImageUrl
         }
     }
 }

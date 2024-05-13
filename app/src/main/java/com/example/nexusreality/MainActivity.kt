@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: ImageAdapter
     private lateinit var viewModel: MediaCoverageViewModel
+//    private lateinit var imageScrollListener: ImageScrollListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,13 +35,14 @@ class MainActivity : AppCompatActivity() {
         })
 
         viewModel.fetchMediaCoverages()
+
+//        imageScrollListener = ImageScrollListener(adapter)
+//        recyclerView.addOnScrollListener(imageScrollListener)
     }
 
     private fun constructImageUrl(thumbnail: Thumbnail): String {
 
         return "${thumbnail.domain}/${thumbnail.basePath}/0/${thumbnail.key}"
 
-        // Construct image URL based on mediaCoverage data
-        // For example: return mediaCoverage.thumbnail.domain + "/" + mediaCoverage.thumbnail.basePath + "/0/" + mediaCoverage.thumbnail.key
-    }
+ }
 }
