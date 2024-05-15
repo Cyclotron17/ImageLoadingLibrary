@@ -11,7 +11,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.nexusreality.R
 import com.example.nexusreality.models.Thumbnail
 import com.example.nexusreality.viewmodel.MediaCoverageViewModel
+//import dagger.hilt.android.AndroidEntryPoint
+//import dagger.hilt.android.HiltAndroidApp
 
+//@HiltAndroidApp
+//@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: ImageAdapter
@@ -39,6 +43,8 @@ class MainActivity : AppCompatActivity() {
 //        imageScrollListener = ImageScrollListener(adapter)
 //        recyclerView.addOnScrollListener(imageScrollListener)
     }
+
+
 
     private fun constructImageUrl(thumbnail: Thumbnail): String {
 

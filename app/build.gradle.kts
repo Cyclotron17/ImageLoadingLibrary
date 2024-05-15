@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -64,5 +65,9 @@ dependencies {
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
 
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
+
+    // HILT
+    implementation ("com.google.dagger:hilt-android:2.38.1")
+    kapt ("com.google.dagger:hilt-android-compiler:2.38.1")
 
 }

@@ -6,7 +6,7 @@ import retrofit2.Call
 
 class MediaCoverageRepository {
 
-    fun getMediaCoverages(): Call<List<ImageModelItem>> {
+    fun getMediaCoverages(page: Int): Call<List<ImageModelItem>> {
         return RetrofitClient.instance.getMediaCoverages()
     }
 }

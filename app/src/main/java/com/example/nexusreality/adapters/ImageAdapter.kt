@@ -12,6 +12,7 @@ import java.lang.ref.WeakReference
 class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ImageViewHolder>() {
 
     private var imageUrls: List<String> = listOf()
+    private var cacheDir: File? = null
 
     fun setImageUrls(imageUrls: List<String>) {
         this.imageUrls = imageUrls
